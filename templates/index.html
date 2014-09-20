@@ -1,10 +1,14 @@
 <!-- index.html -->
 <html>
-    <head>
-        <title>Reload Page 5s</title>
-        <meta http-equiv="refresh" content="5"/>
-    </head>
-    <body>
-        {{data}}
-    </body>
+<head>
+    <title>Buss Timming</title>
+    <script src="{{ static_url('scripts/timing.js')}}" 
+        type="application/javascript">
+    </script>
+</head>
+
+<body onload="updateTime()">
+    <div id = "time"></div>
+</body>
+
 </html>
