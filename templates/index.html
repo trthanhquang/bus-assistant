@@ -1,13 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
+    <meta http-equiv="refresh" content="10">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="{{ static_url('css/foundation.css')}}" />
     <script src="{{ static_url('js/vendor/modernizr.js')}}"></script>
+    <script src="{{ static_url('scripts/timing.js')}}"></script>
   </head>
-  <body>
+  <body onload="updateTime()">
     
     <div class="row">
       <div class="large-12 columns">
@@ -17,9 +19,12 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <h4>Bus Stop: {{busStop}}</h4>
-          {% for bus in busses %}
-            <div class="large-6 medium-6 columns">
+        <h4>Stop ID: {{busStop}} - {{stopDescription}}</h4>
+        <h6 id ="time"> </h6>
+        <h6>Last Update : {{lastUpdateTime}}</h6>
+        {% if len(departureList) > 0 %}
+          {% for bus in departureList %}
+            <div class="large-6 medium-6 columns"> 
               <div class="callout panel">
                 <h5> Bus {{bus}} </h5>
                 {% for timming in bus.busTime %}
@@ -28,6 +33,9 @@
               </div>
             </div>
           {% end %}
+        {% else %}
+          <h5> No Bus Currently Available </h5>
+        {% end %}
         <hr />
       </div>
     </div>

@@ -1,5 +1,7 @@
 function updateTime(){
-    document.getElementById('time').innerHTML = new Date();
+	d = new Date()
+	// d.format()
+    document.getElementById('time').innerHTML = "Current Time: ".concat(d);
     var t = setTimeout(function(){updateTime()},500)
 }
 
